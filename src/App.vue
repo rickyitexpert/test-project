@@ -31,7 +31,7 @@ export default defineComponent({
     if (token !== null && token !== undefined) {
       this.response = { data: { access_token: token, refresh_token } }
       this.$axios.defaults.headers.common['authorization'] = 'Bearer ' + token
-      setInterval(this.refreshToken, this.response?.data?.expires ? this.response.data.expires - 890000 : 3000)
+      setInterval(this.refreshToken, this.response?.data?.expires ? this.response.data.expires - 120000 : 3000)
     }
 
   }

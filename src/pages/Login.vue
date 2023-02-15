@@ -32,7 +32,7 @@ export default {
       let response = await this.$axios.post('https://gangotri-api.brainysoftwares.com/auth/login', this.formData)
       this.response = response.data
       this.postAuth()
-      setInterval(this.refreshToken, response.data.data.expires - 895000)
+      setInterval(this.refreshToken, response.data.data.expires - 120000)
     },
     async refreshToken () {
       delete this.$axios.defaults.headers.common['authorization']

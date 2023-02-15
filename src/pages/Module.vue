@@ -33,6 +33,16 @@ export default {
 
     }
   },
+  watch: {
+    moduleName: {
+      handler () {
+        this.moduleViewComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/view.vue'))
+
+        this.moduleFormComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/form.vue'))
+      },
+      immediate: true
+    }
+  },
   methods: {
     insertData (data) {
       console.log('Event Captured, Sedning Data to view insertMethod')
@@ -43,12 +53,6 @@ export default {
       this.$router.back()
     }
   },
-  created () {
-    this.moduleViewComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/view.vue'))
-
-    this.moduleFormComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/form.vue'))
-
-  }
 }
 
 </script>
