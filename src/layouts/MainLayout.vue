@@ -25,7 +25,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-  </q-layout>
+</q-layout>
 </template>
 
 <script>
@@ -36,20 +36,104 @@ const linksList = [
   {
     title: 'Accounts',
     caption: '',
-    icon: '',
-    link: '/modules/accounts'
+    icon: 'book',
+    link: '/modules/accounts/'
   },
   {
-    title: 'Customers',
+    title: 'Banks',
     caption: '',
-    icon: '',
-    link: '/modules/customer'
+    icon: 'school',
+    link: '/modules/banks/'
   },
   {
-    title: 'Parties',
+    title: 'invoices',
     caption: '',
-    icon: '',
-    link: '/modules/parties'
+    icon: 'note',
+    link: '/modules/invoices/'
+  },
+  {
+    title: 'Accounting_Receipts',
+    caption: '',
+    icon: 'book',
+    link: '/modules/accounting_receipts/'
+  },
+  {
+    title: 'Accounting_Settlements',
+    caption: '',
+    icon: 'book',
+    link: '/modules/accounting_settlements/'
+  },
+  {
+    title: 'Accounting_Taxes',
+    caption: '',
+    icon: 'book',
+    link: '/modules/accounting_taxes/'
+  },
+  {
+    title: 'Contacts',
+    caption: '',
+    icon: 'phone',
+    link: '/modules/contacts/'
+  },
+  {
+    title: 'Contracts',
+    caption: '',
+    icon: 'book',
+    link: '/modules/contracts/'
+  },
+  {
+    title: 'Document_Sequence',
+    caption: '',
+    icon: 'book',
+    link: '/modules/document_sequence/'
+  },
+  {
+    title: 'Driver',
+    caption: '',
+    icon: 'book',
+    link: '/modules/driver/'
+  },
+  {
+    title: 'Invoices_Details',
+    caption: '',
+    icon: 'book',
+    link: '/modules/invoices_details/'
+  },
+  {
+    title: 'Invoices',
+    caption: '',
+    icon: 'book',
+    link: '/modules/invoices/'
+  },
+  {
+    title: 'Items',
+    caption: '',
+    icon: 'book',
+    link: '/modules/items/'
+  },
+  {
+    title: 'Log_Book',
+    caption: '',
+    icon: 'book',
+    link: '/modules/log_book/'
+  },
+  {
+    title: 'Organisation',
+    caption: '',
+    icon: 'book',
+    link: '/modules/organisation/'
+  },
+  {
+    title: 'Vehicle_type',
+    caption: '',
+    icon: 'book',
+    link: '/modules/vehicle_type/'
+  },
+  {
+    title: 'Vehicles',
+    caption: '',
+    icon: 'vehicles',
+    link: '/modules/vehicles/'
   },
 ]
 

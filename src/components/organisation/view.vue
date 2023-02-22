@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div>
-      <h5>accounts</h5>
+      <h5>organisation</h5>
     </div>
 
     <q-table separator="horizontal" :columns="table.columns" :rows="table.rows">
@@ -16,25 +16,25 @@ export default {
       table: {
         rows: [],
         columns: [
-          { label: "Account id", field: "id" },
-          { label: "Account name", field: "account_name" },
-          { label: "Account Address", field: "account_address" },
+          { label: "Id", field: "id" },
+          { label: "Organisation Name", field: "organisation_name" },
+          { label: "Prefix", field: "prefix" },
+          { label: "Address", field: "address" },
           { label: "Email", field: "email" },
           { label: "City", field: "city" },
           { label: "State", field: "state" },
           { label: "Pin Code", field: "pin_code" },
           { label: "Country", field: "country" },
-          { label: "Accounting_receipts", field: "accounting_receipts" },
-          { label: "Status", field: "status" },
+          { label: "Contact Number", field: "contact_number" },
+          { label: "Pan No", field: "pan_no" },
           { label: "User Created", field: "user_created" },
           { label: "User Updated", field: "user_updated" },
           { label: "Data Created", field: "data_created" },
           { label: "Data Updated", field: "data_updated" },
           { label: "Invoices", field: "invoices" },
-          { label: "Contact", field: "contact" },
-          { label: "Log Book", field: "log_book" },
-          { label: "Contracts", field: "contracts" },
-          { label: "GST", field: "gst" }
+          { label: "Status", field: "status" },
+          { label: "Banks", field: "banks" },
+          { label: "GST Number", field: "gst_number" }
         ],
       },
     };
@@ -44,7 +44,7 @@ export default {
       this.table.rows.push(data);
     },
     async fetchData () {
-      let response = await this.$api.get("https://gangotri-api.brainysoftwares.com/items/accounts?fields=*.*");
+      let response = await this.$api.get("https://gangotri-api.brainysoftwares.com/items/organisation");
       this.table.rows = response.data.data;
     },
   },

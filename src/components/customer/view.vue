@@ -29,7 +29,10 @@ export default {
   },
   methods: {
     insertData (data) {
+      console.log('Insert data recieved')
+      alert()
       this.table.rows.push(data)
+      console.log('Data Inserted')
     }
   }
 }

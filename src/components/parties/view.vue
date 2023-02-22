@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div>
-      <h5>Parties</h5>
+      <h5>parties</h5>
     </div>
 
     <q-table separator="horizontal" :columns="table.columns" :rows="filteredRows">
@@ -11,9 +11,11 @@
             :href="'tel:' + props.value"></q-btn>
         </q-td>
 
+
+
       </template>
     </q-table>
-  </div>
+</div>
 </template>
 
 <script>
@@ -23,12 +25,16 @@ export default {
       table: {
         rows: [
 
+
+
+
+
         ],
         columns: [
           { label: 'Member Card', field: 'member_card' },
-          { label: 'Aadhar', field: 'aadhar_number' },
+          { label: 'Aadhar Number', field: 'aadhar_number' },
           { label: 'First Name', field: (row) => row.user_id.first_name },
-          { label: 'Mobile Number', field: (row) => row.user_id.mobile_number, name: 'mobile_number' },
+          { label: 'Mobile Number', field: (row) => row.user_id.mobile_number, name: 'mobile_number' }
         ]
       }
     }
@@ -39,6 +45,7 @@ export default {
         return row.user_id.first_name ? true : false
       })
 
+
     }
   },
   methods: {
@@ -46,14 +53,14 @@ export default {
       this.table.rows.push(data)
     },
     async fetchData () {
-      let response = await this.$axios.get('https://dhairya-api.brainysoftwares.com/items/parties?fields=*.*')
-      this.table.rows = response.data.data
+      let response = await this.$api.get("https://dhairya-api.brainysoftwares.com/items/parties?fields=*.*");
+      this.table.rows = response.data.data;
     }
+
 
   },
   created () {
     this.fetchData()
   }
 }
-
 </script>

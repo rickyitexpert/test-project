@@ -13,8 +13,7 @@
         Response- {{ response }}
       </q-card>
     </div>
-  </q-page>
-
+</q-page>
 </template>
 <script>
 export default {
@@ -28,20 +27,27 @@ export default {
   },
   methods: {
     async login () {
-      delete this.$axios.defaults.headers.common['authorization']
-      let response = await this.$axios.post('https://gangotri-api.brainysoftwares.com/auth/login', this.formData)
+      delete this.$api.defaults.headers.common['authorization']
+      let response = await this.$api.post('https://gangotri-api.brainysoftwares.com/auth/login', this.formData)
       this.response = response.data
       this.postAuth()
-      setInterval(this.refreshToken, response.data.data.expires - 120000)
+      setTimeout(this.refreshToken, response.data.data.expires - 120000)
     },
     async refreshToken () {
-      delete this.$axios.defaults.headers.common['authorization']
-      let response = await this.$axios.post('https://gangotri-api.brainysoftwares.com/auth/refresh', { refresh_token: this.response.data.refresh_token })
+      let self = this
+      delete this.$api.defaults.headers.common['authorization']
+      let response = await this.$api.post('https://gangotri-api.brainysoftwares.com/auth/refresh', { refresh_token: this.response.data.refresh_token })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            self.$router.push('/login')
+          }
+        })
       this.response = response.data
       this.postAuth()
+      setTimeout(this.refreshToken, response.data.data.expires - 120000)
     },
     postAuth () {
-      this.$axios.defaults.headers.common['authorization'] = 'Bearer ' + this.response.data.access_token
+      this.$api.defaults.headers.common['authorization'] = 'Bearer ' + this.response.data.access_token
       this.$q.localStorage.set('access_token', this.response.data.access_token)
       this.$q.localStorage.set('refresh_token', this.response.data.refresh_token)
     }

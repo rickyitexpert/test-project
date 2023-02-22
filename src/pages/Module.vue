@@ -9,9 +9,11 @@
         <q-btn label="add" to="./add" />
       </div>
       <div class="col" v-if="mode === 'add'">
-        <component ref="form" :is="moduleFormComponent" @formSubmit="insertData">
+        <q-card class="q-pa-md q-ma-md scroll" style="height:80vh">
+          <component ref="form" :is="moduleFormComponent" @formSubmit="insertData">
 
-        </component>
+          </component>
+        </q-card>
       </div>
       <div class="col">
         <component ref="view" :is="moduleViewComponent">
@@ -20,7 +22,7 @@
       </div>
 
     </div>
-  </q-page>
+</q-page>
 </template>
 <script>
 import { defineAsyncComponent } from 'vue'
@@ -35,7 +37,8 @@ export default {
   },
   watch: {
     moduleName: {
-      handler () {
+      handler (val) {
+        console.log(val, this.moduleName)
         this.moduleViewComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/view.vue'))
 
         this.moduleFormComponent = defineAsyncComponent(() => import('./../components/' + this.moduleName + '/form.vue'))
@@ -44,12 +47,9 @@ export default {
     }
   },
   methods: {
-    insertData (data) {
-      console.log('Event Captured, Sedning Data to view insertMethod')
-      alert()
-      this.$refs.view.insertData(data)
-      console.log('Data sent to view.vue now routing back')
-      alert()
+    async insertData (data) {
+      let response = await this.$api.post('/items/' + this.moduleName, data)
+      this.$refs.view.fetchData()
       this.$router.back()
     }
   },
