@@ -13,7 +13,7 @@
         Response- {{ response }}
       </q-card>
     </div>
-</q-page>
+  </q-page>
 </template>
 <script>
 export default {
